@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>第 13 课 · Fetch 与前后端连接</title><link rel="stylesheet" href="/styles.css"></head>
+<body>
+  <header class="topbar"><a href="#main" class="brand">Fetch 日记练习</a><span>LESSON 13</span></header>
+  <main id="main" class="shell">
+    <section class="hero"><p class="eyebrow">BROWSER → API → SQLITE</p><h1>让网页读取服务端日记</h1><p>这次页面里的日记不再写死在 HTML，也不来自 localStorage。每次显示都要经过真实的 HTTP 请求。</p></section>
+    <p id="status" class="notice" role="status" aria-live="polite">正在检查登录状态…</p>
+    <section id="login-panel" class="card login-card" hidden>
+      <div><p class="eyebrow">练习账号</p><h2>先建立登录会话</h2><p>账号：<code>diary_student</code><br>密码：<code>learn-fetch-2026!</code></p></div>
+      <form id="login-form"><label>账号<input name="username" value="diary_student" autocomplete="username" required></label><label>密码<input name="password" type="password" value="learn-fetch-2026!" autocomplete="current-password" required></label><p class="error" role="alert" hidden></p><button type="submit">登录并读取日记</button></form>
+    </section>
+    <section id="diary-panel" hidden>
+      <div class="toolbar"><div><p class="eyebrow">SERVER DATA</p><h2 id="welcome">服务端日记</h2></div><div><button id="reload" type="button" class="secondary">重新请求</button><button id="logout" type="button" class="secondary">退出</button></div></div>
+      <div class="content-grid">
+        <form id="entry-form" class="card"><h3>POST 一篇日记</h3><label>日期<input name="entryDate" type="date" required></label><label>标题<input name="title" maxlength="120" required></label><label>正文<textarea name="content" maxlength="5000" required></textarea></label><p class="error" role="alert" hidden></p><button type="submit">发送到 API</button></form>
+        <section class="card"><h3>GET 返回的日记</h3><div id="entries" class="entries" aria-live="polite"></div></section>
+      </div>
+    </section>
+    <details class="card"><summary>怎样观察 Fetch？</summary><ol><li>按 F12 打开开发者工具。</li><li>选择 Network（网络）。</li><li>点击“重新请求”。</li><li>查看 <code>GET /api/entries</code> 的状态码和 JSON。</li></ol></details>
+  </main>
+  <script type="module" src="/client.js"></script>
+</body>
+</html>

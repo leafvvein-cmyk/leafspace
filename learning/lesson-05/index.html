@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第 05 课 · 对象、数组和循环</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#main">日记练习</a>
+      <span id="entry-count" class="count-badge">0 篇</span>
+    </header>
+
+    <main id="main" class="page-shell">
+      <section class="intro">
+        <p class="eyebrow">LESSON 05</p>
+        <h1>把多篇日记放进列表</h1>
+        <p>本课数据只存在页面内存中，刷新会清空，不会进入正式日记空间。</p>
+      </section>
+
+      <form id="entry-form" class="editor-card">
+        <div class="field">
+          <label for="entry-title">标题</label>
+          <input id="entry-title" maxlength="80" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="entry-content">正文</label>
+          <textarea id="entry-content" rows="5"></textarea>
+        </div>
+        <p id="form-error" class="error" role="alert" hidden></p>
+        <button class="primary-button" type="submit">加入日记列表</button>
+      </form>
+
+      <section class="list-section" aria-labelledby="list-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">MEMORY ARRAY</p>
+            <h2 id="list-title">本次练习的日记</h2>
+          </div>
+          <button id="clear-button" class="secondary-button" type="button" disabled>清空列表</button>
+        </div>
+        <p id="list-status" class="visually-hidden" role="status" aria-live="polite"></p>
+        <p id="empty-state" class="empty-state">数组现在是空的。先填写并加入第一篇日记。</p>
+        <div id="entry-list" class="entry-grid"></div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "@diary/mobile",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "add:android": "cap add android",
+    "add:ios": "cap add ios --packagemanager SPM",
+    "sync": "cap sync",
+    "open:android": "cap open android",
+    "open:ios": "cap open ios",
+    "android:debug": "node ../../scripts/build-android.mjs"
+  },
+  "dependencies": {
+    "@aparajita/capacitor-biometric-auth": "^10.0.0",
+    "@aparajita/capacitor-secure-storage": "^8.0.0",
+    "@capacitor-community/sqlite": "^8.1.0",
+    "@capacitor/android": "^8.5.1",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/camera": "^8.2.4",
+    "@capacitor/core": "^8.5.1",
+    "@capacitor/filesystem": "^8.0.0",
+    "@capacitor/ios": "^8.5.1",
+    "@capacitor/keyboard": "^8.0.0",
+    "@capacitor/local-notifications": "^8.3.1",
+    "@capacitor/share": "^8.0.0"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "^8.5.1"
+  }
+}

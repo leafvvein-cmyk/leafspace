@@ -1,0 +1,7 @@
+@media print {
+  .sidebar, .bottom-navigation, .page-actions, .day-aside, .editor-toolbar, .sheet-actions, .editor-footer, .toast, .skip-link { display: none !important; }
+  .app-shell, .today-layout { display: block !important; }
+  .main-content { padding: 0 !important; }
+  .writing-sheet, .reading-sheet { border: 0 !important; box-shadow: none !important; }
+  :root { --text: #000; --bg: #fff; --surface: #fff; --paper: #fff; --muted: #333; }
+}

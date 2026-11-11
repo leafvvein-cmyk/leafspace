@@ -1,0 +1,16 @@
+.env
+.runtime
+.tools
+artifacts
+node_modules
+**/node_modules
+test-results*
+tests
+docs
+apps/client/dist
+apps/client/dist-native
+apps/mobile/*
+!apps/mobile/package.json
+apps/api/.private-assets
+apps/api/.private-exports
+*.log

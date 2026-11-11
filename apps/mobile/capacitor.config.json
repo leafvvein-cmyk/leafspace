@@ -1,0 +1,20 @@
+{
+  "appId": "com.diary.learning",
+  "appName": "日记",
+  "webDir": "../client/dist-native",
+  "backgroundColor": "#F7F3EC",
+  "loggingBehavior": "none",
+  "server": { "hostname": "localhost", "androidScheme": "https", "iosScheme": "capacitor" },
+  "android": { "allowMixedContent": false, "minWebViewVersion": 109 },
+  "ios": { "contentInset": "automatic" },
+  "plugins": {
+    "CapacitorSQLite": {
+      "androidIsEncryption": true,
+      "iosIsEncryption": true,
+      "iosKeychainPrefix": "diary-v2",
+      "iosDatabaseLocation": "Library/CapacitorDatabase"
+    },
+    "Keyboard": { "resize": "native", "resizeOnFullScreen": true },
+    "LocalNotifications": { "presentationOptions": ["sound", "banner", "list"] }
+  }
+}

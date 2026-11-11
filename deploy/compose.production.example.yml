@@ -1,0 +1,87 @@
+name: diary-production
+
+services:
+  postgres:
+    image: postgres@sha256:5b96f1a16bd9768b060dd2ffe55cb6225c4d9ef4d214a8b21eb08134869a97e4
+    environment:
+      POSTGRES_USER: diary
+      POSTGRES_PASSWORD: ${DIARY_DB_PASSWORD:?set DIARY_DB_PASSWORD}
+      POSTGRES_DB: diary
+    volumes:
+      - diary_database:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U diary -d diary"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  migrate:
+    build:
+      context: ..
+      dockerfile: deploy/api.Dockerfile
+    environment: &api_environment
+      NODE_ENV: production
+      DATABASE_URL: ${DIARY_DATABASE_URL:?set DIARY_DATABASE_URL with a percent-encoded password}
+      APP_SECRET: ${DIARY_APP_SECRET:?set a random secret of at least 64 characters}
+      WEB_ORIGIN: ${DIARY_WEB_ORIGIN:?set the public HTTPS origin}
+      DIARY_ASSET_STORAGE_PATH: /var/lib/diary/assets
+      DIARY_EXPORT_STORAGE_PATH: /var/lib/diary/exports
+    command: ["node", "apps/api/src/migrate.js"]
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: "no"
+
+  api:
+    build:
+      context: ..
+      dockerfile: deploy/api.Dockerfile
+    environment: *api_environment
+    volumes:
+      - diary_assets:/var/lib/diary/assets
+      - diary_exports:/var/lib/diary/exports
+    tmpfs:
+      - /tmp:size=128m,mode=1777
+    read_only: true
+    init: true
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:8787/api/v1/health/ready').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ..
+      dockerfile: deploy/web.Dockerfile
+    ports:
+      - "127.0.0.1:${DIARY_WEB_PORT:-8080}:8080"
+    tmpfs:
+      - /tmp:size=32m,mode=1777
+    read_only: true
+    init: true
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:8080/"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+    depends_on:
+      api:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  diary_database:
+  diary_assets:
+  diary_exports:

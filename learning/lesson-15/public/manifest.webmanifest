@@ -1,0 +1,14 @@
+{
+  "id": "/",
+  "name": "日记 PWA 学习版",
+  "short_name": "日记学习",
+  "description": "第 15 课：学习安装、离线外壳和安全更新。",
+  "lang": "zh-CN",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4efe6",
+  "theme_color": "#744f3b",
+  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
+}

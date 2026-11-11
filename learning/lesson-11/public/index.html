@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>第 11 课 · SQLite 与 SQL</title><link rel="stylesheet" href="/styles.css"></head>
+  <body>
+    <header class="topbar"><a class="brand" href="#main">SQLite 日记练习</a><span class="lesson-badge">LESSON 11</span></header>
+    <main id="main" class="page-shell">
+      <section class="intro"><p class="eyebrow">TABLE + QUERY + TRANSACTION</p><h1>重启服务器，日记仍然存在</h1><p>数据只写入第 11 课独立 SQLite 文件，不属于正式账号数据库。</p></section>
+      <p id="request-status" class="notice" role="status" aria-live="polite">正在查询 SQLite…</p>
+      <form id="entry-form" class="editor-card" novalidate>
+        <div class="field"><label for="entry-title">标题</label><input id="entry-title" maxlength="80" autocomplete="off"></div>
+        <div class="field"><label for="entry-content">正文</label><textarea id="entry-content" maxlength="5000" rows="5"></textarea></div>
+        <p id="form-error" class="error" role="alert" hidden></p><button class="primary-button" type="submit">写入 SQLite</button>
+      </form>
+      <section class="results" aria-labelledby="list-title"><div class="result-heading"><h2 id="list-title">数据库查询结果</h2><output id="entry-count">0 篇</output></div><p id="empty-state" class="empty-state" hidden>数据库中还没有练习日记。</p><div id="entry-list" class="entry-list"></div></section>
+    </main><script type="module" src="/client.js"></script>
+  </body>
+</html>

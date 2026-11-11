@@ -1,0 +1,7 @@
+{
+  "name": "@diary/contracts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/entry.js", "./markdown": "./src/markdown.js", "./task-recurrence": "./src/task-recurrence.js", "./app-actions": "./src/app-actions.js" }
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第 04 课 · JavaScript 让页面动起来</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#main">日记练习</a>
+      <button id="new-entry-button" class="primary-button" type="button">写日记</button>
+    </header>
+
+    <main id="main" class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">LESSON 04</p>
+        <h1 id="page-title">让按钮真正执行操作</h1>
+        <p>这个页面只练习变量、函数、DOM 查询和事件，不会读取或修改正式日记数据。</p>
+      </section>
+
+      <p id="page-status" class="status" role="status" aria-live="polite">还没有保存练习日记。</p>
+
+      <form id="entry-form" class="editor-card" hidden>
+        <div class="field">
+          <label for="entry-title">标题</label>
+          <input id="entry-title" name="title" maxlength="80" autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="entry-content">正文</label>
+          <textarea id="entry-content" name="content" rows="7"></textarea>
+        </div>
+
+        <p id="form-error" class="error" role="alert" hidden></p>
+
+        <div class="actions">
+          <button id="cancel-button" class="secondary-button" type="button">取消</button>
+          <button class="primary-button" type="submit">保存练习</button>
+        </div>
+      </form>
+
+      <article id="saved-entry" class="diary-card" hidden>
+        <p class="eyebrow">刚刚保存</p>
+        <h2 id="saved-title"></h2>
+        <p id="saved-content"></p>
+      </article>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

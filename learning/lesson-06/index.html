@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第 06 课 · 表单与输入验证</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a href="#main" class="brand">日记练习</a>
+      <span class="lesson-badge">LESSON 06</span>
+    </header>
+
+    <main id="main" class="page-shell">
+      <section class="intro">
+        <p class="eyebrow">FORM + VALIDATION</p>
+        <h1>让错误准确指向输入框</h1>
+        <p>本页只保存本次练习结果，刷新后清空，不会进入正式账号空间。</p>
+      </section>
+
+      <form id="entry-form" class="editor-card" novalidate>
+        <div class="field">
+          <label for="entry-title">标题 <span aria-hidden="true">*</span></label>
+          <input id="entry-title" name="title" required minlength="2" maxlength="80" aria-describedby="title-hint title-error" autocomplete="off">
+          <p id="title-hint" class="hint">2–80 个字符，不能只输入空格。</p>
+          <p id="title-error" class="field-error" role="alert" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="entry-date">日记日期 <span aria-hidden="true">*</span></label>
+          <input id="entry-date" name="entryDate" type="date" required aria-describedby="date-hint date-error">
+          <p id="date-hint" class="hint">可以补写过去，但不能选择未来日期。</p>
+          <p id="date-error" class="field-error" role="alert" hidden></p>
+        </div>
+
+        <fieldset class="field mood-field" aria-describedby="mood-hint mood-error">
+          <legend>心情</legend>
+          <p id="mood-hint" class="hint">可选；如果选择，只能选择一个。</p>
+          <div class="radio-row">
+            <label><input type="radio" name="mood" value="happy"> 开心</label>
+            <label><input type="radio" name="mood" value="calm"> 平静</label>
+            <label><input type="radio" name="mood" value="sad"> 低落</label>
+          </div>
+          <p id="mood-error" class="field-error" role="alert" hidden></p>
+        </fieldset>
+
+        <div class="field">
+          <label for="entry-content">正文 <span aria-hidden="true">*</span></label>
+          <textarea id="entry-content" name="content" required minlength="5" maxlength="5000" rows="8" aria-describedby="content-hint content-error"></textarea>
+          <div class="hint-row">
+            <p id="content-hint" class="hint">5–5000 个字符。</p>
+            <output id="content-count" for="entry-content">0 / 5000</output>
+          </div>
+          <p id="content-error" class="field-error" role="alert" hidden></p>
+        </div>
+
+        <button class="primary-button" type="submit">验证并保存</button>
+      </form>
+
+      <section id="saved-result" class="result-card" aria-labelledby="result-title" hidden>
+        <p class="eyebrow">VALID DATA</p>
+        <h2 id="result-title"></h2>
+        <dl>
+          <div><dt>日期</dt><dd id="result-date"></dd></div>
+          <div><dt>心情</dt><dd id="result-mood"></dd></div>
+          <div><dt>正文长度</dt><dd id="result-length"></dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

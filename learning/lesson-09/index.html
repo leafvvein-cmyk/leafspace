@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第 09 课 · Node.js 与 HTTP</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#main">日记 API 练习</a>
+      <span class="lesson-badge">LESSON 09</span>
+    </header>
+
+    <main id="main" class="page-shell">
+      <section class="intro">
+        <p class="eyebrow">NODE.JS + HTTP</p>
+        <h1>浏览器向自己的服务器请求数据</h1>
+        <p>服务器只在本机回环地址运行，数据保存在服务器内存，重启后清空。</p>
+      </section>
+
+      <p id="request-status" class="notice" role="status" aria-live="polite">正在请求 GET /api/entries…</p>
+
+      <form id="entry-form" class="editor-card" novalidate>
+        <div class="field">
+          <label for="entry-title">标题</label>
+          <input id="entry-title" maxlength="80" autocomplete="off">
+        </div>
+        <div class="field">
+          <label for="entry-content">正文</label>
+          <textarea id="entry-content" maxlength="5000" rows="5"></textarea>
+        </div>
+        <p id="form-error" class="error" role="alert" hidden></p>
+        <button class="primary-button" type="submit">POST 新日记</button>
+      </form>
+
+      <section class="results" aria-labelledby="list-title">
+        <div class="result-heading"><h2 id="list-title">服务器返回的日记</h2><output id="entry-count">0 篇</output></div>
+        <div id="entry-list" class="entry-list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="/client.js"></script>
+  </body>
+</html>

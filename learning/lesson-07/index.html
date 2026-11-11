@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第 07 课 · localStorage 与 JSON</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#main">日记练习</a>
+      <span id="entry-count" class="count-badge">0 篇</span>
+    </header>
+
+    <main id="main" class="page-shell">
+      <section class="intro">
+        <p class="eyebrow">LESSON 07</p>
+        <h1>刷新后，日记还在</h1>
+        <p>本课只使用当前浏览器的学习存储，不会进入正式账号或云端。</p>
+      </section>
+
+      <p id="storage-status" class="notice" role="status" aria-live="polite">正在读取本机练习数据…</p>
+
+      <form id="entry-form" class="editor-card" novalidate>
+        <div class="field">
+          <label for="entry-title">标题</label>
+          <input id="entry-title" maxlength="80" autocomplete="off" aria-describedby="form-error">
+        </div>
+        <div class="field">
+          <label for="entry-content">正文</label>
+          <textarea id="entry-content" maxlength="5000" rows="5" aria-describedby="form-error"></textarea>
+        </div>
+        <p id="form-error" class="error" role="alert" hidden></p>
+        <button class="primary-button" type="submit">保存到浏览器</button>
+      </form>
+
+      <section class="list-section" aria-labelledby="list-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">PERSISTED ARRAY</p>
+            <h2 id="list-title">已保存练习日记</h2>
+          </div>
+          <button id="reset-button" class="secondary-button" type="button" disabled>删除全部练习数据</button>
+        </div>
+        <p id="empty-state" class="empty-state">还没有记录。保存后刷新页面，再观察它是否仍然存在。</p>
+        <div id="entry-list" class="entry-list"></div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

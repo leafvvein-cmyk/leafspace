@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>第 08 课 · 搜索、标签与日期</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#main">日记练习</a>
+      <span class="lesson-badge">LESSON 08</span>
+    </header>
+
+    <main id="main" class="page-shell">
+      <section class="intro">
+        <p class="eyebrow">SEARCH + FILTER</p>
+        <h1>从历史日记中找到那一天</h1>
+        <p>搜索只处理本页的六篇示例记录，不访问正式账号或网络。</p>
+      </section>
+
+      <form id="filter-form" class="filter-card" role="search">
+        <div class="field search-field">
+          <label for="query">搜索标题、正文或标签</label>
+          <input id="query" type="search" maxlength="100" autocomplete="off" placeholder="例如：雨、工作、C++">
+        </div>
+        <div class="field">
+          <label for="tag">标签</label>
+          <select id="tag"><option value="">全部标签</option></select>
+        </div>
+        <div class="field">
+          <label for="date-from">开始日期</label>
+          <input id="date-from" type="date">
+        </div>
+        <div class="field">
+          <label for="date-to">结束日期</label>
+          <input id="date-to" type="date">
+        </div>
+        <button id="reset-button" class="secondary-button" type="button">清除筛选</button>
+      </form>
+
+      <p id="filter-error" class="error" role="alert" hidden></p>
+
+      <section class="results" aria-labelledby="result-title">
+        <div class="result-heading">
+          <h2 id="result-title">搜索结果</h2>
+          <output id="result-count" for="query tag date-from date-to" aria-live="polite">0 篇</output>
+        </div>
+        <p id="empty-state" class="empty-state" hidden>没有符合条件的日记。原始记录没有被删除，请调整或清除筛选。</p>
+        <div id="result-list" class="entry-grid"></div>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

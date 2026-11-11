@@ -1,0 +1,200 @@
+:root {
+  --canvas: #f3ece4;
+  --paper: #fffdf8;
+  --ink: #3f3128;
+  --muted: #75675e;
+  --accent: #8a5d43;
+  --line: #e4d7cc;
+  --danger: #9d3028;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: system-ui, "Microsoft YaHei", sans-serif;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 64px;
+  padding: 0.75rem max(1rem, calc((100% - 68rem) / 2));
+  border-bottom: 1px solid var(--line);
+  background: var(--paper);
+}
+
+.brand {
+  color: var(--ink);
+  font-size: 1.125rem;
+  font-weight: 750;
+  text-decoration: none;
+}
+
+.page-shell {
+  width: min(100% - 2rem, 68rem);
+  margin-inline: auto;
+  padding-block: 3rem;
+}
+
+.intro {
+  max-width: 64ch;
+}
+
+.intro h1 {
+  margin-block: 0.25rem 0.75rem;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1.12;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+}
+
+.status,
+.editor-card,
+.diary-card {
+  max-width: 68ch;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--paper);
+}
+
+.status {
+  padding-block: 0.75rem;
+  color: var(--muted);
+}
+
+.editor-card {
+  display: grid;
+  gap: 1rem;
+  box-shadow: 0 16px 42px rgb(74 53 40 / 10%);
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.field {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.field label {
+  font-weight: 650;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid #cbb9ab;
+  border-radius: 10px;
+  background: white;
+  color: var(--ink);
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--accent);
+  outline: 3px solid rgb(138 93 67 / 18%);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.primary-button,
+.secondary-button {
+  min-height: 44px;
+  padding: 0.7rem 1.1rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.primary-button {
+  border: 0;
+  background: var(--accent);
+  color: white;
+}
+
+.secondary-button {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--ink);
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+  filter: brightness(0.94);
+}
+
+.primary-button:focus-visible,
+.secondary-button:focus-visible,
+.brand:focus-visible {
+  outline: 3px solid #c58b64;
+  outline-offset: 3px;
+}
+
+.error {
+  margin: 0;
+  color: var(--danger);
+  font-weight: 650;
+}
+
+.diary-card h2 {
+  margin-block: 0.25rem 0.5rem;
+}
+
+.diary-card p:last-child {
+  margin-bottom: 0;
+  white-space: pre-wrap;
+}
+
+@media (max-width: 40rem) {
+  .topbar {
+    min-height: 56px;
+  }
+
+  .page-shell {
+    width: min(100% - 1rem, 68rem);
+    padding-block: 1.5rem;
+  }
+
+  .status,
+  .editor-card,
+  .diary-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@diary/client",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 4173 --strictPort",
+    "build": "vite build",
+    "build:mobile": "vite build --mode native --outDir dist-native",
+    "preview": "vite preview --host 127.0.0.1 --port 4173 --strictPort",
+    "preview:mobile": "vite preview --host 127.0.0.1 --port 4174 --strictPort --outDir dist-native"
+  },
+  "dependencies": {
+    "@aparajita/capacitor-biometric-auth": "^10.0.0",
+    "@aparajita/capacitor-secure-storage": "^8.0.0",
+    "@capacitor-community/sqlite": "^8.1.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/camera": "^8.2.4",
+    "@capacitor/core": "^8.5.1",
+    "@capacitor/filesystem": "^8.0.0",
+    "@capacitor/keyboard": "^8.0.0",
+    "@capacitor/local-notifications": "^8.3.1",
+    "@capacitor/share": "^8.0.0",
+    "@diary/contracts": "0.1.0",
+    "@tiptap/core": "^3.0.0",
+    "@tiptap/extension-placeholder": "^3.0.0",
+    "@tiptap/extension-task-item": "^3.0.0",
+    "@tiptap/extension-task-list": "^3.0.0",
+    "@tiptap/pm": "^3.0.0",
+    "@tiptap/starter-kit": "^3.0.0",
+    "dexie": "^4.0.0",
+    "hash-wasm": "^4.12.0",
+    "lucide": "^0.468.0"
+  },
+  "devDependencies": {
+    "vite": "^8.2.2"
+  }
+}
